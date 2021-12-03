@@ -22,7 +22,7 @@
       <h3>Pertanyaan Survei</h3>
     </div>
     <div class="col-2">
-      <button class="btn btn-primary">Tambah Pertanyaan</button>
+      <a href="{{ route('survey-data-form') }}" class="btn btn-primary">Tambah Pertanyaan</a>
     </div>
   </div>
   <div class="row">
@@ -39,18 +39,18 @@
               </tr>
             </thead>
             <tbody>
-              @for ($i = 0; $i < 10; $i++) <tr>
+              @foreach ($surveys as $survey) <tr>
                 <td class="text-center">
-                  {{$i}}
+                  {{$survey->id}}
                 </td>
                 <td>
-                  Pertanyaan {{ $i }}
+                  {{$survey->question}}
                 </td>
                 <td>
                   <button class="btn btn-success p-2" type="button"><i class="bi-pencil"></i></button>
                 </td>
-                </tr>
-                @endfor
+              </tr>
+              @endforeach
             </tbody>
           </table>
         </div>
