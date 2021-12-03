@@ -3,17 +3,6 @@
 use App\Http\Controllers\SurveyController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -24,7 +13,9 @@ Route::get('/dashboard', function () {
 
 Route::get('survey-data', [SurveyController::class, 'getSurveyDataPage'])->name('survey-data');
 Route::get('survey-data/add-question', [SurveyController::class, 'getSurveyDataAddForm'])->name('survey-data-form');
-Route::post('survey-data/add-question', [SurveyController::class, 'postSurveyData'])->name('survey-data-post');
+Route::post('survey-data', [SurveyController::class, 'postSurveyData'])->name('survey-data-post');
+Route::get('survey-data/{id}/edit-question', [SurveyController::class, 'getSurveyDataEditForm'])->name('survey-data-form-edit');
+Route::put('survey-data/{id}', [SurveyController::class, 'putSurveyData'])->name('survey-data-put');
 
 Route::get('survey-data/result', [SurveyController::class, 'getSurveyResultPage'])->name('survey-data-result');
 

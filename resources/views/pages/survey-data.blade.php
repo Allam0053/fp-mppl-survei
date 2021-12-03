@@ -47,7 +47,7 @@
                   {{$survey->question}}
                 </td>
                 <td>
-                  <button class="btn btn-success p-2" type="button"><i class="bi-pencil"></i></button>
+                  <a href="{{ route('survey-data-form-edit', ['id' => $survey->id]) }}" class="btn btn-success p-2" type="a"><i class="bi-pencil"></i></button>
                 </td>
               </tr>
               @endforeach

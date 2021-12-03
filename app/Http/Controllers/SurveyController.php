@@ -33,4 +33,26 @@ class SurveyController extends Controller
             return $e->getMessage();
         }
     }
+
+    function getSurveyDataEditForm($id)
+    {
+        $survey = Survey::find($id);
+
+        return view('pages.survey-data-form-edit', compact(['survey']));
+    }
+
+    function putSurveyData($id, Request $request)
+    {
+        $request->validate(['question' => 'required|max:255']);
+
+        try {
+            Survey::where('id', $id)->update(['question' => $request->question]);
+
+            $message = 'Berhasil mengubah data pertanyaan survei';
+
+            return redirect()->route('survey-data')->with('success', $message);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
 }
