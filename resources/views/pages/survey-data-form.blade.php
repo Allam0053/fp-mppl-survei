@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
+@section('navtext')
+@include('components.navbar', ['page' => 'Tambah Pertanyaan'])
+@endsection
+
 @section('navbar')
-@include('components.sidenav', ['active' => "survey-data"])
+@include('components.sidenav', ['active' => "survey-data", 'survey_data' => 'add'])
 @endsection
 
 @section('content')

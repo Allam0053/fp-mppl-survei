@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('navtext')
+@include('components.navbar', ['page' => 'Edit Form', 'survey_data' => 'edit'])
+@endsection
+
 @section('navbar')
 @include('components.sidenav', ['active' => "survey-data"])
 @endsection

@@ -19,4 +19,7 @@ Route::put('survey-data/{id}', [SurveyController::class, 'putSurveyData'])->name
 
 Route::get('survey-data/result', [SurveyController::class, 'getSurveyResultPage'])->name('survey-data-result');
 
+Route::get('isi-survey', [SurveyController::class, 'getSurveyPage'])->name('isi-survey');
+Route::post('isi-survey', [SurveyController::class, 'postSurveyResponses'])->name('isi-survey-post');
+
 require __DIR__ . '/auth.php';

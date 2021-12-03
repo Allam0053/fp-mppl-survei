@@ -19,36 +19,76 @@
         $dashboard_active = 'active';
         @endphp
         @endif
-        <a class="nav-link {{$dashboard_active}}" href="{{ route('dashboard') }}">
+        <a class="nav-link {{$dashboard_active}}" href="{{ route('survey-data-result') }}">
           <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
             @include('icons.box-3d')
           </div>
           <span class="nav-link-text ms-1">Dashboard</span>
         </a>
       </li>
+
+
       <li class="nav-item">
         @php
-        $survey_data_active = '';
+        $forms_active = '';
+        $forms_show = '';
         @endphp
-
         @if ($active == "survey-data")
         @php
-        $survey_data_active = 'active';
+        $forms_active = 'active';
+        $forms_show = 'show';
         @endphp
         @endif
-        <a class="nav-link {{$dashboard_active}}" href="{{ route('survey-data-form') }}">
-          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-            @include('icons.office')
+        <a class="nav-link {{$forms_active}}" data-bs-toggle="collapse" href="#dashboardsExamples" aria-controls="dashboardsExamples" role="button" aria-expanded="false">
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
+            @include('icons.shop')
           </div>
-          <span class="nav-link-text ms-1">Data Survei</span>
+          <span class="nav-link-text ms-1">Pertanyaan</span>
         </a>
+        <div class="collapse {{$forms_show}}" id="dashboardsExamples">
+          <ul class="nav ms-4 ps-3">
+
+            @php
+            $survey_data_active = '';
+            @endphp
+            @if ($survey_data == "add")
+            @php
+            $survey_data_active = 'active';
+            @endphp
+            @endif
+            <li class="nav-item {{$survey_data_active}}">
+              <a class="nav-link {{$survey_data_active}}" href="{{ route('survey-data-form') }}">
+                <span class="sidenav-mini-icon"> Ca </span>
+                <span class="sidenav-normal"> Buat </span>
+              </a>
+            </li>
+
+            @php
+            $survey_data_active = '';
+            @endphp
+            @if ($survey_data == "all")
+            @php
+            $survey_data_active = 'active';
+            @endphp
+            @endif
+            <li class="nav-item {{$survey_data_active}}">
+              <a class="nav-link {{$survey_data_active}}" href="{{ route('survey-data') }}">
+                <span class="sidenav-mini-icon"> Ca </span>
+                <span class="sidenav-normal"> List </span>
+              </a>
+            </li>
+
+          </ul>
+        </div>
       </li>
+
+
       <li class="nav-item">
         @php
         $survey_result_active = '';
         @endphp
 
-        @if ($active == "survey-result")
+        @if ($active == "hasil-survey")
         @php
         $survey_result_active = 'active';
         @endphp
@@ -60,6 +100,8 @@
           <span class="nav-link-text ms-1">Hasil Survei</span>
         </a>
       </li>
+
+
     </ul>
   </div>
 </aside>
