@@ -20,7 +20,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/apple-icon.png') }}">
-  <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
+  <link rel="icon" type="image/png" href="https://my.its.ac.id/assets/media/favicons/favicon-web.png">
   <title>
     Survei Pelanggan ITS
   </title>
@@ -52,7 +52,7 @@
       @include('components.footer.index')
     </div>
   </main>
-  @include('components.plugin')
+  {{-- @include('components.plugin') --}}
 
   <!--   Core JS Files   -->
   <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>

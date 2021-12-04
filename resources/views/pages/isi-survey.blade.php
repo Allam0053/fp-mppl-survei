@@ -19,7 +19,7 @@
 
   <div class="card mt-4 z-index-0">
     <div class="card-header text-center pt-4">
-      <h5>Form Edit Pertanyaan</h5>
+      <h5>Form Isian Survei</h5>
     </div>
     <div class="card-body">
 

@@ -84,7 +84,7 @@ class SurveyController extends Controller
             ]);
         }
 
-        return redirect()->back()->with('success', 'response terekam, terima kasih telah mengisi survey');
+        return redirect()->back()->with('success', 'Response terekam, Terima kasih telah mengisi survey');
     }
 
     function getSurveyResultPage()
