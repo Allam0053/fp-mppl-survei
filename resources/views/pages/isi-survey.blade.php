@@ -42,10 +42,29 @@
           </li>
           <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg" style="flex-direction: column;">
             @foreach($surveys as $survey)
-            <label>{{$survey->question}}</label>
+            <label>{{$loop->iteration .". ".$survey->question}}</label>
             <div class="mb-3 col-12">
               <input type="hidden" class="form-control" placeholder="Jawaban" aria-label="Email" aria-describedby="email-addon" name="survey_id[]" value="{{$survey->id}}">
-              <input type="text" class="form-control col-12" placeholder="Jawaban" aria-label="{{$survey->question}}" aria-describedby="email-addon" name="response[]">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="response[{{$loop->index}}]" id="{{"opt1-".$loop->iteration}}" value="1">
+                <label class="form-check-label" for="{{"opt1-".$loop->iteration}}">Tidak Puas</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="response[{{$loop->index}}]" id="{{"opt2-".$loop->iteration}}" value="2">
+                <label class="form-check-label" for="{{"opt2-".$loop->iteration}}">Kurang Puas</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="response[{{$loop->index}}]" id="{{"opt3-".$loop->iteration}}" value="3">
+                <label class="form-check-label" for="{{"opt3-".$loop->iteration}}">Cukup Puas</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="response[{{$loop->index}}]" id="{{"opt4-".$loop->iteration}}" value="4">
+                <label class="form-check-label" for="{{"opt4-".$loop->iteration}}">Puas</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="response[{{$loop->index}}]" id="{{"opt5-".$loop->iteration}}" value="5">
+                <label class="form-check-label" for="{{"opt5-".$loop->iteration}}">Sangat Puas</label>
+              </div>
             </div>
             @endforeach
           </li>

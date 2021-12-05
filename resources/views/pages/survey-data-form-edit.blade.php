@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('navtext')
-@include('components.navbar', ['page' => 'Edit Form', 'survey_data' => 'edit'])
+@include('components.navbar', ['page' => 'Edit Form'])
 @endsection
 
 @section('navbar')
-@include('components.sidenav', ['active' => "survey-data"])
+@include('components.sidenav', ['active' => "survey-data", 'survey_data' => 'edit'])
 @endsection
 
 @section('content')

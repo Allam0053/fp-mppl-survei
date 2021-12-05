@@ -151,9 +151,19 @@
                   {{$response->id}}
                 </td>
                 <td>
-                  {{$response->customer->name}} <br>
+                  <span class="font-weight-bold">{{"Responden : ".$response->customer->name}}</span> <br>
                   {{$response->survey->question}} <br>
-                  {{$response->response}}
+                  @if($response->response == '1')
+                  <small>Jawaban : Tidak Puas <span class="badge badge-danger">{{$response->response}}</span> </small>
+                  @elseif($response->response == '2')
+                  <small>Jawaban : Kurang Puas <span class="badge badge-warning">{{$response->response}}</span> </small>
+                  @elseif($response->response == '3')
+                  <small>Jawaban : Cukup Puas <span class="badge badge-primary">{{$response->response}}</span> </small>
+                  @elseif($response->response == '4')
+                  <small>Jawaban : Puas <span class="badge badge-info">{{$response->response}}</span> </small>
+                  @elseif($response->response == '5')
+                  <small>Jawaban : Sangat Puas <span class="badge badge-success">{{$response->response}}</span> </small>
+                  @endif
                 </td>
                 <td>
                   <a href="#" class="btn btn-success p-2" type="a"><i class="bi-pencil"></i></button>
