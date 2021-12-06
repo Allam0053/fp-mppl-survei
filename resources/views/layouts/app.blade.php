@@ -35,6 +35,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   <!-- CSS Files -->
   <link id="pagestyle" href="{{ asset('assets/css/soft-ui-dashboard.css?v=1.0.3') }}" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Meow+Script&display=swap" rel="stylesheet">
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -49,7 +52,7 @@
       @include('components.sections.index-2')
       @include('components.sections.index-3') --}}
       @yield('content')
-      @include('components.footer.index')
+      {{-- @include('components.footer.index') --}}
     </div>
   </main>
   {{-- @include('components.plugin') --}}
