@@ -105,7 +105,7 @@ class SurveyController extends Controller
         // Today's New Customers responding
         $u = $stater->todayCount(Customer::class);
         // Total Reponses
-        $r = $stater->total(Response::class);
+        $tr = $stater->total(Response::class);
 
         $newResponses = $stater->getNewStatOf(Response::class);
         $newCustomer = $stater->getNewStatOf(Customer::class);
@@ -125,7 +125,7 @@ class SurveyController extends Controller
             'today_questions_plus' => $stater->todayCount(Survey::class),
             'today_responses' => $r,
             'today_customer_responding' => $u,
-            'total_responses' => $r,
+            'total_responses' => $tr,
             'graph_responses' => $newResponses,
             'graph_customer' => $newCustomer,
             'dates' => $stater->getNineDates('Y-m-d'),

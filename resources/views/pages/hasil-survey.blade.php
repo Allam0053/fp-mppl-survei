@@ -315,15 +315,15 @@
           borderWidth: 3,
           backgroundColor: gradientStrokev1,
           fill: true,
-          data: [<?php echo '"' . $stats['graph_customer'][8] . '"' ?>,
-            <?php echo '"' . $stats['graph_customer'][7] . '"' ?>,
-            <?php echo '"' . $stats['graph_customer'][6] . '"' ?>,
-            <?php echo '"' . $stats['graph_customer'][5] . '"' ?>,
-            <?php echo '"' . $stats['graph_customer'][4] . '"' ?>,
-            <?php echo '"' . $stats['graph_customer'][3] . '"' ?>,
-            <?php echo '"' . $stats['graph_customer'][2] . '"' ?>,
-            <?php echo '"' . $stats['graph_customer'][1] . '"' ?>,
-            <?php echo '"' . $stats['graph_customer'][0] . '"' ?>
+          data: [<?php echo '"' . $stats['graph_responses'][8] . '"' ?>,
+            <?php echo '"' . $stats['graph_responses'][7] . '"' ?>,
+            <?php echo '"' . $stats['graph_responses'][6] . '"' ?>,
+            <?php echo '"' . $stats['graph_responses'][5] . '"' ?>,
+            <?php echo '"' . $stats['graph_responses'][4] . '"' ?>,
+            <?php echo '"' . $stats['graph_responses'][3] . '"' ?>,
+            <?php echo '"' . $stats['graph_responses'][2] . '"' ?>,
+            <?php echo '"' . $stats['graph_responses'][1] . '"' ?>,
+            <?php echo '"' . $stats['graph_responses'][0] . '"' ?>
           ],
           maxBarThickness: 6
 
