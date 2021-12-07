@@ -101,7 +101,7 @@ class SurveyController extends Controller
         // Today's Questions
         $q = $stater->total(Survey::class);
         // Today's Responses
-        $r = $stater->todayCount(Response::class);
+        // $r = $stater->todayCount(Response::class);
         // Today's New Customers responding
         $u = $stater->todayCount(Customer::class);
         // Total Reponses
@@ -110,20 +110,26 @@ class SurveyController extends Controller
         $newResponses = $stater->getNewStatOf(Response::class);
         $newCustomer = $stater->getNewStatOf(Customer::class);
 
+        $total_resp = 0;
+        $count_resp = 0;
         $surveys = Survey::all();
         foreach ($surveys as $survey) {
             $total = 0;
             foreach ($survey->response as $response) {
                 $total += $response->response;
+                $total_resp += $response->response;
+                $count_resp++;
             }
             $avg = $total / $survey->response->count();
             $survey->avg = $avg;
         }
+        $avg_resp = $total_resp / $count_resp;
+        $avg_resp = number_format($avg_resp, 2, '.', '');
 
         return [
             'today_questions' => $q,
             'today_questions_plus' => $stater->todayCount(Survey::class),
-            'today_responses' => $r,
+            'avg_responses' => $avg_resp,
             'today_customer_responding' => $u,
             'total_responses' => $tr,
             'graph_responses' => $newResponses,

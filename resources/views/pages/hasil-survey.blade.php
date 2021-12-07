@@ -17,7 +17,7 @@
         <div class="row">
           <div class="col-8">
             <div class="numbers">
-              <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Question</p>
+              <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Pertanyaan</p>
               <h5 class="font-weight-bolder mb-0">
                 {{ $stats['today_questions'] }}
                 <span class="text-success text-sm font-weight-bolder">+{{ $stats['today_questions_plus'] }}</span>
@@ -39,9 +39,9 @@
         <div class="row">
           <div class="col-8">
             <div class="numbers">
-              <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Responses</p>
+              <p class="text-sm mb-0 text-capitalize font-weight-bold">Rata-rata total tanggapan</p>
               <h5 class="font-weight-bolder mb-0">
-                {{ $stats['today_responses'] }}
+                {{ $stats['avg_responses'] }}
               </h5>
             </div>
           </div>
@@ -60,7 +60,7 @@
         <div class="row">
           <div class="col-8">
             <div class="numbers">
-              <p class="text-sm mb-0 text-capitalize font-weight-bold">New Customers Responding</p>
+              <p class="text-sm mb-0 text-capitalize font-weight-bold">Pelanggan merespon (hari ini)</p>
               <h5 class="font-weight-bolder mb-0">
                 {{ $stats['today_customer_responding'] }}
               </h5>
@@ -81,7 +81,7 @@
         <div class="row">
           <div class="col-8">
             <div class="numbers">
-              <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Responses</p>
+              <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Tanggapan</p>
               <h5 class="font-weight-bolder mb-0">
                 {{ $stats['total_responses'] }}
               </h5>
@@ -192,92 +192,6 @@
 
 @section('script')
 <script>
-  /*
-  var ctx = document.getElementById("chart-bars").getContext("2d");
-
-  new Chart(ctx, {
-    type: "bar",
-    data: {
-      labels: [
-        <?php echo '"' . $stats['dates'][8] . '"' ?>,
-        <?php echo '"' . $stats['dates'][7] . '"' ?>,
-        <?php echo '"' . $stats['dates'][6] . '"' ?>,
-        <?php echo '"' . $stats['dates'][5] . '"' ?>,
-        <?php echo '"' . $stats['dates'][4] . '"' ?>,
-        <?php echo '"' . $stats['dates'][3] . '"' ?>,
-        <?php echo '"' . $stats['dates'][2] . '"' ?>,
-        <?php echo '"' . $stats['dates'][1] . '"' ?>,
-        <?php echo '"' . $stats['dates'][0] . '"' ?>
-      ],
-      datasets: [{
-        label: "Responses",
-        tension: 0.4,
-        borderWidth: 0,
-        borderRadius: 4,
-        borderSkipped: false,
-        backgroundColor: "#fff",
-        data: [<?php echo '"' . $stats['graph_responses'][8] . '"' ?>,
-          <?php echo '"' . $stats['graph_responses'][7] . '"' ?>,
-          <?php echo '"' . $stats['graph_responses'][6] . '"' ?>,
-          <?php echo '"' . $stats['graph_responses'][5] . '"' ?>,
-          <?php echo '"' . $stats['graph_responses'][4] . '"' ?>,
-          <?php echo '"' . $stats['graph_responses'][3] . '"' ?>,
-          <?php echo '"' . $stats['graph_responses'][2] . '"' ?>,
-          <?php echo '"' . $stats['graph_responses'][1] . '"' ?>,
-          <?php echo '"' . $stats['graph_responses'][0] . '"' ?>
-        ],
-        maxBarThickness: 6
-      }, ],
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          display: false,
-        }
-      },
-      interaction: {
-        intersect: false,
-        mode: 'index',
-      },
-      scales: {
-        y: {
-          grid: {
-            drawBorder: false,
-            display: false,
-            drawOnChartArea: false,
-            drawTicks: false,
-          },
-          ticks: {
-            suggestedMin: 0,
-            suggestedMax: 500,
-            beginAtZero: true,
-            padding: 15,
-            font: {
-              size: 14,
-              family: "Open Sans",
-              style: 'normal',
-              lineHeight: 2
-            },
-            color: "#fff"
-          },
-        },
-        x: {
-          grid: {
-            drawBorder: false,
-            display: false,
-            drawOnChartArea: false,
-            drawTicks: false
-          },
-          ticks: {
-            display: false
-          },
-        },
-      },
-    },
-  }); */
-
   var ctx = document.getElementById("chart-bars").getContext("2d");
 
   var gradientStrokev1 = ctx.createLinearGradient(0, 230, 0, 50);
@@ -307,7 +221,7 @@
         <?php echo '"' . $stats['dates'][0] . '"' ?>
       ],
       datasets: [{
-          label: "new customers",
+          label: "tanggapan baru",
           tension: 0.4,
           borderWidth: 0,
           pointRadius: 0,
@@ -399,84 +313,6 @@
     },
   });
 
-  var ctx_avg = document.getElementById("chart-bars-avg").getContext("2d");
-
-  new Chart(ctx_avg, {
-    type: "bar",
-    data: {
-      labels: [
-        <?php
-        foreach ($stats['surveys'] as $survey) {
-          echo '"' . $survey->question . '"' . ',';
-        }
-        ?>,
-      ],
-      datasets: [{
-        label: "Responses",
-        tension: 0.4,
-        borderWidth: 0,
-        borderRadius: 4,
-        borderSkipped: false,
-        backgroundColor: "#fff",
-        data: [
-          <?php
-          foreach ($stats['surveys'] as $survey) {
-            echo '"' . $survey->avg . '"' . ',';
-          }
-          ?>,
-        ],
-        maxBarThickness: 6
-      }, ],
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          display: false,
-        }
-      },
-      interaction: {
-        intersect: false,
-        mode: 'index',
-      },
-      scales: {
-        y: {
-          grid: {
-            drawBorder: false,
-            display: false,
-            drawOnChartArea: false,
-            drawTicks: false,
-          },
-          ticks: {
-            suggestedMin: 0,
-            suggestedMax: 500,
-            beginAtZero: true,
-            padding: 15,
-            font: {
-              size: 14,
-              family: "Open Sans",
-              style: 'normal',
-              lineHeight: 2
-            },
-            color: "#fff"
-          },
-        },
-        x: {
-          grid: {
-            drawBorder: false,
-            display: false,
-            drawOnChartArea: false,
-            drawTicks: false
-          },
-          ticks: {
-            display: false
-          },
-        },
-      },
-    },
-  });
-
   var ctx2 = document.getElementById("chart-line").getContext("2d");
 
   var gradientStroke1 = ctx2.createLinearGradient(0, 230, 0, 50);
@@ -506,7 +342,7 @@
         <?php echo '"' . $stats['dates'][0] . '"' ?>
       ],
       datasets: [{
-          label: "new customers",
+          label: "pelanggan baru",
           tension: 0.4,
           borderWidth: 0,
           pointRadius: 0,
@@ -593,6 +429,85 @@
               lineHeight: 2
             },
           }
+        },
+      },
+    },
+  });
+
+
+  var ctx_avg = document.getElementById("chart-bars-avg").getContext("2d");
+
+  new Chart(ctx_avg, {
+    type: "bar",
+    data: {
+      labels: [
+        <?php
+        foreach ($stats['surveys'] as $survey) {
+          echo '"' . $survey->question . '"' . ',';
+        }
+        ?>,
+      ],
+      datasets: [{
+        label: "Rata-rata tanggapan",
+        tension: 0.4,
+        borderWidth: 0,
+        borderRadius: 4,
+        borderSkipped: false,
+        backgroundColor: "#fff",
+        data: [
+          <?php
+          foreach ($stats['surveys'] as $survey) {
+            echo '"' . $survey->avg . '"' . ',';
+          }
+          ?>,
+        ],
+        maxBarThickness: 6
+      }, ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false,
+        }
+      },
+      interaction: {
+        intersect: false,
+        mode: 'index',
+      },
+      scales: {
+        y: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            suggestedMin: 0,
+            suggestedMax: 500,
+            beginAtZero: true,
+            padding: 15,
+            font: {
+              size: 14,
+              family: "Open Sans",
+              style: 'normal',
+              lineHeight: 2
+            },
+            color: "#fff"
+          },
+        },
+        x: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false
+          },
+          ticks: {
+            display: false
+          },
         },
       },
     },
