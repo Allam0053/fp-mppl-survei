@@ -33,7 +33,7 @@ class Stats
   /* get new user 7 last days */
   public function getNewStatOf($model)
   {
-    $models = $model::where('created_at', '>', Carbon::now()->subDays(6))->get();
+    $models = $model::where('created_at', '>', Carbon::now()->subDays(8))->get();
     $tomorrow = Carbon::tomorrow()->format('Y-m-d');
     $today_subs = $this->getNineDates('Y-m-d');
     $new_models_count = [

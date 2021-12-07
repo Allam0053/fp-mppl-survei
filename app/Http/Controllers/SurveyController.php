@@ -110,6 +110,16 @@ class SurveyController extends Controller
         $newResponses = $stater->getNewStatOf(Response::class);
         $newCustomer = $stater->getNewStatOf(Customer::class);
 
+        $surveys = Survey::all();
+        foreach ($surveys as $survey) {
+            $total = 0;
+            foreach ($survey->response as $response) {
+                $total += $response->response;
+            }
+            $avg = $total / $survey->response->count();
+            $survey->avg = $avg;
+        }
+
         return [
             'today_questions' => $q,
             'today_questions_plus' => $stater->todayCount(Survey::class),
@@ -118,7 +128,8 @@ class SurveyController extends Controller
             'total_responses' => $r,
             'graph_responses' => $newResponses,
             'graph_customer' => $newCustomer,
-            'dates' => $stater->getNineDates('Y-m-d')
+            'dates' => $stater->getNineDates('Y-m-d'),
+            'surveys' => $surveys
         ];
     }
 }
