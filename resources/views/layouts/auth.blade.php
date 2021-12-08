@@ -20,9 +20,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/apple-icon.png') }}">
-  <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
+  <link rel="icon" type="image/png" href="https://my.its.ac.id/assets/media/favicons/favicon-web.png">
+
   <title>
-    Soft UI Dashboard by Creative Tim
+    Survei Pelanggan ITS
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -45,8 +46,8 @@
             <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
               <div class="card card-plain mt-8">
                 <div class="card-header pb-0 text-left bg-transparent">
-                  <h3 class="font-weight-bolder text-info text-gradient">Welcome back</h3>
-                  <p class="mb-0">Enter your email and password to sign in</p>
+                  <h3 class="font-weight-bolder text-info text-gradient">Survei Pelanggan ITS</h3>
+                  <p class="mb-0">Masukan Email dan Password anda untuk memulai</p>
                 </div>
                 <div class="card-body">
                   @yield('content')
