@@ -14,6 +14,7 @@ class Response extends Model
         "survey_id",
         "customer_id",
         "response",
+        "question"
     ];
 
     public function customer()

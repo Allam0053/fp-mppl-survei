@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SurveyController;
+use App\Models\Survey;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {

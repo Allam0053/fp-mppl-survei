@@ -81,6 +81,7 @@ class SurveyController extends Controller
                 "survey_id" => $r->survey_id[$it],
                 "customer_id" => $customer->id,
                 "response" => $r->response[$it],
+                "question" => Survey::where('id', $r->survey_id[$it])->first()->question
             ]);
         }
 
