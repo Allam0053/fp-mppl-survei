@@ -112,8 +112,9 @@ class SurveyController extends Controller
         $newCustomer = $stater->getNewStatOf(Customer::class);
 
         $total_resp = 0;
-        $count_resp = 0;
+        $count_resp = 1;
         $surveys = Survey::all();
+
         foreach ($surveys as $survey) {
             $total = 0;
             foreach ($survey->response as $response) {
@@ -121,7 +122,9 @@ class SurveyController extends Controller
                 $total_resp += $response->response;
                 $count_resp++;
             }
-            $avg = $total / $survey->response->count();
+            $divider = 1;
+            if ($survey->response->count()) $divider = $survey->response->count();
+            $avg = $total / $divider;
             $survey->avg = $avg;
         }
         $avg_resp = $total_resp / $count_resp;
